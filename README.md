@@ -128,7 +128,7 @@ def create_bucket(bucket_name):
         Bucket=bucket_name,
         CreateBucketConfiguration={'LocationConstraint': REGION}
     )
-    print(f"✅ Created bucket: {bucket_name}")
+    print(f" Created bucket: {bucket_name}")
 def copy_to_bucket(source_bucket, object_key, destination_bucket):
     copy_source = {'Bucket': source_bucket, 'Key': object_key}
     s3.copy_object(
@@ -136,7 +136,7 @@ def copy_to_bucket(source_bucket, object_key, destination_bucket):
         CopySource=copy_source,
         Key=object_key
     )
-    print(f"✅ Copied {object_key} from {source_bucket} to {destination_bucket}")
+    print(f" Copied {object_key} from {source_bucket} to {destination_bucket}")
 def send_sns_notification(bucket_name, created_time):
     message = f"""Hello user,
 This is to inform you that a new S3 bucket has been created for backup purposes.
@@ -149,7 +149,7 @@ AWS Lambda Backup System
 """
     sns.publish(
         TopicArn=SNS_TOPIC_ARN,
-        Subject='✅ S3 Backup Bucket Created',
+        Subject=' S3 Backup Bucket Created',
         Message=message
     )
     print("📧 Email notification sent via SNS.")
@@ -170,7 +170,7 @@ def lambda_handler(event, context):
             'body': f"Backup complete. Object '{object_key}' copied to '{BUCKET_NAME}'."
         }
     except Exception as e:
-        print(f"❌ Error: {str(e)}")
+        print(f" Error: {str(e)}")
         raise e
 ```
 
