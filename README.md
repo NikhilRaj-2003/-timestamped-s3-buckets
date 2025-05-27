@@ -140,9 +140,9 @@ def copy_to_bucket(source_bucket, object_key, destination_bucket):
 def send_sns_notification(bucket_name, created_time):
     message = f"""Hello user,
 This is to inform you that a new S3 bucket has been created for backup purposes.
-🔹 Bucket Name: {bucket_name}
-🔹 Region: {REGION}
-🔹 Created At (UTC): {created_time}
+ Bucket Name: {bucket_name}
+ Region: {REGION}
+ Created At (UTC): {created_time}
 All future uploads will be backed up to this bucket.
 Thank You,
 AWS Lambda Backup System
